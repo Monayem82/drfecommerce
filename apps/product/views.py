@@ -13,6 +13,12 @@ class CategoroyViewSet(viewsets.ViewSet):
         queryset = Category.objects.all()
         serializer = CategorySerializer(queryset, many=True)
         return Response(serializer.data)
+    def create(self, request):
+        serializer=CategorySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
 
 class BrandViewSet(viewsets.ViewSet):
