@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: DRF Ecommers API
+  version: 1.0.0
+  description: This is documentation of api
+paths:
+  /product/api/brand/:
+    get:
+      operationId: product_api_brand_retrieve
+      tags:
+      - product
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /product/api/category/:
+    get:
+      operationId: product_api_category_retrieve
+      tags:
+      - product
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: product_api_category_create
+      tags:
+      - product
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          description: No response body
+  /product/api/product/:
+    get:
+      operationId: product_api_product_retrieve
+      tags:
+      - product
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

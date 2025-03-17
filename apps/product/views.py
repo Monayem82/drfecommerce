@@ -2,13 +2,21 @@ from django.shortcuts import render
 
 from rest_framework import viewsets
 from rest_framework.response import Response
+
 from apps.product.serializers import ProductSerializer,CategorySerializer,BradSerializer
+
+from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiExample
+from drf_spectacular.types import OpenApiTypes
+
 
 from . models import Brand,Category,Product
 
 
 
 class CategoroyViewSet(viewsets.ViewSet):
+    serializer_class =CategorySerializer
+
+    @extend_schema(request=CategorySerializer)
     def list(self, request):
         queryset = Category.objects.all()
         serializer = CategorySerializer(queryset, many=True)
@@ -22,6 +30,9 @@ class CategoroyViewSet(viewsets.ViewSet):
 
 
 class BrandViewSet(viewsets.ViewSet):
+    serializer_class =BradSerializer
+
+    @extend_schema(request=BradSerializer)
     def list(self, request):
         queryset = Brand.objects.all()
         serializer = BradSerializer(queryset, many=True)
@@ -29,6 +40,8 @@ class BrandViewSet(viewsets.ViewSet):
 
 
 class ProductViewSet(viewsets.ViewSet):
+    serializer_class =ProductSerializer
+    @extend_schema(request=ProductSerializer)
     def list(self, request):
         queryset = Product.objects.all()
         serializer = ProductSerializer(queryset, many=True)
