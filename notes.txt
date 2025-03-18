@@ -1,0 +1,4 @@
+1. parent model theke child model ar kisu dorte chaile ata hobe reverse realtion 
+that means -filed_name or related_name="userDefine korte hobe"
+
+2.but child theke parent ke dhorte chaile ata hosse forword realtion ata jonne onno kisu kora lage na

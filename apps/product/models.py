@@ -30,10 +30,10 @@ class Product(models.Model):
 
 
 class ProductDetails(models.Model):
-    price=models.DecimalField(decimal_places=3,max_digits=5)
-    stock_qty=models.IntegerField(max_length=5)
+    price=models.DecimalField(decimal_places=3,max_digits=10)
+    stock_qty=models.IntegerField()
     sku=models.CharField(max_length=100)
-    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name="product_details")
     is_active=models.BooleanField(default=False)
 
     def __str__(self):

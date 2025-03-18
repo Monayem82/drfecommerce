@@ -30,13 +30,12 @@ class CategoroyViewSet(viewsets.ViewSet):
 
 
 class BrandViewSet(viewsets.ViewSet):
+    queryset = Brand.objects.all()
     serializer_class =BradSerializer
 
     @extend_schema(request=BradSerializer)
     def list(self, request):
-        queryset = Brand.objects.all()
-        serializer = BradSerializer(queryset, many=True)
-        return Response(serializer.data)
+        return super().list(request)
 
 
 class ProductViewSet(viewsets.ViewSet):
